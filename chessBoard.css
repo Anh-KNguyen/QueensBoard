@@ -1,3 +1,4 @@
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
 #chessBoard {
     display: inline-block;
     border: 2px outset lightGray;
@@ -11,14 +12,5 @@
     display: inline-block;
     width: 32px;
     height: 32px;
-}
-
-#chessBoard div:nth-child(odd) span:nth-child(even),
-#chessBoard div:nth-child(even) span:nth-child(odd) {
-    background-color: black;
-}
-
-#chessBoard div:nth-child(even) span:nth-child(even),
-#chessBoard div:nth-child(odd) span:nth-child(odd) {
     background-color: snow;
 }

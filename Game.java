@@ -85,30 +85,30 @@ public class Game {
     public void deleteQueen(int numRow, int numCol) {
         queenCounter -= 1;
 
-        // block every sqaure the queen can attack (all row and coloumns belonging to that queen)
+        // unblock every sqaure the queen can attack (all row and coloumns belonging to that queen)
         for (int i=0; i<board[0].length; i++) {
-            // block row for specific attacking queen
+            // unblock row for specific attacking queen
             board[numRow][i] -= 1;
-            // block column for specific attacking queen
+            // unblock column for specific attacking queen
             board[i][numCol] -= 1;
         }
 
-        // block left backwards diagonal (direction = \)
+        // unblock left backwards diagonal (direction = \)
         for (int i=numRow, k=numCol; i<board[0].length; i++, k++) {
             board[i][k] -= 1;
         }
 
-        // block left forwards diagonal (direction = \)
+        // unblock left forwards diagonal (direction = \)
         for (int c=numRow, j=numCol; c >= 0; c--, j--) {
             board[c][j] -= 1;
         }
 
-        // block right backwards diagonal (direction = /)
+        // unblock right backwards diagonal (direction = /)
         for (int i=numRow, k=numCol; i<board[0].length; i++, k--) {
             board[i][k] -= 1;
         }
 
-        // block right forwards diagonal (direction = /)
+        // unblock right forwards diagonal (direction = /)
         for (int c = numRow, j = numCol; c >= 0; c--, j++) {
             board[c][j] -= 1;
         }

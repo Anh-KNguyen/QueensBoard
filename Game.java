@@ -2,7 +2,7 @@ public class Game {
 
     private int numRows = 8;
     private int numCols = 8;
-    private final int initChar = 0; // safe spots
+    private final int initChar = 0; // default safe spot
 
     private int queenCounter = 0; // keep track numQueens
 
@@ -35,12 +35,6 @@ public class Game {
             return true;
         else
             return false;
-    }
-    
-    // make square safe
-    public void unsetSquare(int numRow, int numCol) {
-        if (board[numRow][numCol] > 0)
-            board[numRow][numCol] -= 1;
     }
 
     // place queen on specific square

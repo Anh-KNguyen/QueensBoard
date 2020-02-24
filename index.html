@@ -1,15 +1,116 @@
-<!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Chessboard</title>
-    <link href="chessBoard.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <style type="text/css">
+        .chessboard {
+            width: 640px;
+            height: 640px;
+            margin: 20px;
+            border: 25px solid #333;
+        }
+        
+        .black {
+            float: left;
+            width: 80px;
+            height: 80px;
+            background-color: #999;
+            font-size: 50px;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
+        
+        .white {
+            float: left;
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+            font-size: 50px;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="chessBoard"></div>
-    <script type="text/javascript" src="chessBoard.js"></script>
+    <div id="chessboard" class="chessboard">
+        <!-- 1st -->
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <!-- 2nd -->
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <!-- 3th -->
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <!-- 4st -->
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <!-- 5th -->
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <!-- 6th -->
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <!-- 7th -->
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <!-- 8th -->
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+        <div class="black"></div>
+        <div class="white"></div>
+    </div>
+    <script src="Game.js"></script>
+    <script src="chessBoard.js"></script>
 </body>
 
 </html>

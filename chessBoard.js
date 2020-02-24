@@ -1,19 +1,8 @@
-var chessBoard = document.getElementById("chessBoard");
+var chessBoard = document.getElementById("chessboard");
 
-for (var i = 0; i < 8; i++) {
-    var row = chessBoard.appendChild(document.createElement("div")); // row
-    for (var j = 0; j < 8; j++) {
-        var span = chessBoard.appendChild(document.createElement("span")); // column
-        if (i & 1) { // odd
-            if (j & 1) { // white
-            } else { //black
-                span.style.backgroundColor = "black";
-            }
-        } else { // even
-            if (j & 1) { // black
-                span.style.backgroundColor = "black";
-            }
-        }
-        row.appendChild(span)
-    }
+sol = queensGame.prettyBoard.flat();
+
+for (let i = 0; i < sol.length; i++) {
+    if (sol[i] == 1)
+        chessBoard.children[i].innerHTML = "&#9819;"
 }

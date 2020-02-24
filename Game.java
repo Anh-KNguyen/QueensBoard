@@ -10,7 +10,7 @@ public class Game {
 
     // initialize board to safe squares ("0")
     public void initialize() {
-        for (int i = 0; i < board.length; i++) {
+        for (int i=0; i<board.length; i++) {
             for (int k = 0; k < board[0].length; k++) {
                 board[i][k] = initChar;
             }
@@ -19,9 +19,9 @@ public class Game {
 
     // print board to console
     public void display() {
-        for (int i = 0; i < board.length; i++) {
+        for (int i=0; i<board.length; i++) {
             System.out.print("\t");
-            for (int k = 0; k < board[0].length; k++) {
+            for (int k=0; k<board[0].length; k++) {
                 System.out.print(board[i][k] + " ");
             }
             System.out.print("\n");
@@ -76,7 +76,7 @@ public class Game {
         }
 
         // block right forwards diagonal (direction = /)
-        for (int c = numRow, j = numCol; c >= 0; c--, j++) {
+        for (int c=numRow, j=numCol; c >= 0; c--, j++) {
             board[c][j] += 1;
         }
 
@@ -109,7 +109,7 @@ public class Game {
         }
 
         // unblock right forwards diagonal (direction = /)
-        for (int c = numRow, j = numCol; c >= 0; c--, j++) {
+        for (int c=numRow, j=numCol; c >= 0; c--, j++) {
             board[c][j] -= 1;
         }
 

@@ -1,10 +1,10 @@
-var process: any
+var p: any
 if (typeof window === 'undefined') 
 // we are running under node.js
-    process = require("process"); 
+    p = require("process"); 
 else 
 // we are running in chrome
-    process = {
+    p = {
         "stdout": {
             "write" : function(nop) {
                 // do nothing
@@ -39,7 +39,7 @@ class Game {
 
     private queenCounter: number = 0; // keep track number of Queens
 
-    private blankBoard: number[][] = [
+    private blankBoard: number[][] = [ // constant
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
@@ -49,8 +49,10 @@ class Game {
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0]
     ];;
-    private board: number[][];
-    private prettyBoard: number[][];
+    
+    private board: number[][]; // current state of board
+
+    private prettyBoard: number[][]; // final solution board
 
 
     // initialize board to safe squares ("0")
@@ -71,6 +73,7 @@ class Game {
         }
     }
 
+    // for debug
     displayDebug() {
         for (let i = 0; i < this.board.length; i++) {
             process.stdout.write("\t")
@@ -81,33 +84,25 @@ class Game {
         }
     }
 
-    // check if square is unsafe
-    // if unsafe, we don't use
-    isUnsafe(numRow, numCol): boolean {
-        if (this.board[numRow][numCol] != this.initChar)
-            return true;
-        else
-            return false;
-    }
-
     // place queen on specific square
     placeQueen(numRow, numCol): boolean {
-        if (this.isUnsafe(numRow, numCol)) {
+        // not safe, don't add
+        if (this.board[numRow][numCol] != this.initChar) {
             return false;
         }
+        // safe, add queen
         else {
             this.addQueen(numRow, numCol);
             return true;
         }
     }
 
-
     addQueen(numRow, numCol) {
         this.board[numRow][numCol] += 1;
         this.prettyBoard[numRow][numCol] = 1;
         this.queenCounter += 1;
 
-        // block every sqaure the queen can attack (all row and coloumns belonging to that queen)
+        // block row and column
         for (let i = 0; i < this.board[0].length; i++) {
             // block row for specific attacking queen
             if (i != numCol) {
@@ -151,7 +146,7 @@ class Game {
         this.board[numRow][numCol] -= 1
         this.prettyBoard[numRow][numCol] = 0;
 
-        // unblock every sqaure the queen can attack (all row and coloumns belonging to that queen)
+        // unblock row and column
         for (let i = 0; i < this.board[0].length; i++) {
             // unblock row for specific attacking queen
             if (i != numCol)
@@ -189,6 +184,7 @@ class Game {
 
     // generate random solution to puzzle
     solveRand(colList: number[]): boolean {
+        // start with base case 
         if (colList.length == 0 || this.queenCounter == 8) {
             this.display();
             return true;
@@ -203,10 +199,12 @@ class Game {
             let col = colList[0]
             if (this.placeQueen(r, col) == true) {
                 // we placed a queen
+                // do depth first search
                 ans = this.solveRand(colList.slice(1)) || ans;
                 if (ans == true) {
                     return true;
                 }
+                // backtrack
                 this.deleteQueen(r, col);
             }
         }
@@ -223,7 +221,7 @@ class Game {
         for (let r = 0; r < this.board.length; r++) {
             if (this.placeQueen(r, col) == true) {
                 // we placed a queen
-                // depth search
+                // do depth first search
                 ans = this.solve(col + 1) || ans;
                 if (ans == true) {
                     return true;

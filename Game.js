@@ -1,10 +1,10 @@
-var process;
+var p;
 if (typeof window === 'undefined')
     // we are running under node.js
-    process = require("process");
+    p = require("process");
 else
     // we are running in chrome
-    process = {
+    p = {
         "stdout": {
             "write": function (nop) {
                 // do nothing
@@ -60,6 +60,7 @@ var Game = /** @class */ (function () {
             process.stdout.write("\n");
         }
     };
+    // for debug
     Game.prototype.displayDebug = function () {
         for (var i = 0; i < this.board.length; i++) {
             process.stdout.write("\t");
@@ -69,19 +70,13 @@ var Game = /** @class */ (function () {
             process.stdout.write("\n");
         }
     };
-    // check if square is unsafe
-    // if unsafe, we don't use
-    Game.prototype.isUnsafe = function (numRow, numCol) {
-        if (this.board[numRow][numCol] != this.initChar)
-            return true;
-        else
-            return false;
-    };
     // place queen on specific square
     Game.prototype.placeQueen = function (numRow, numCol) {
-        if (this.isUnsafe(numRow, numCol)) {
+        // not safe, don't add
+        if (this.board[numRow][numCol] != this.initChar) {
             return false;
         }
+        // safe, add queen
         else {
             this.addQueen(numRow, numCol);
             return true;
@@ -91,7 +86,7 @@ var Game = /** @class */ (function () {
         this.board[numRow][numCol] += 1;
         this.prettyBoard[numRow][numCol] = 1;
         this.queenCounter += 1;
-        // block every sqaure the queen can attack (all row and coloumns belonging to that queen)
+        // block row and column
         for (var i = 0; i < this.board[0].length; i++) {
             // block row for specific attacking queen
             if (i != numCol) {
@@ -128,7 +123,7 @@ var Game = /** @class */ (function () {
         this.queenCounter -= 1;
         this.board[numRow][numCol] -= 1;
         this.prettyBoard[numRow][numCol] = 0;
-        // unblock every sqaure the queen can attack (all row and coloumns belonging to that queen)
+        // unblock row and column
         for (var i = 0; i < this.board[0].length; i++) {
             // unblock row for specific attacking queen
             if (i != numCol)
@@ -160,6 +155,7 @@ var Game = /** @class */ (function () {
     };
     // generate random solution to puzzle
     Game.prototype.solveRand = function (colList) {
+        // start with base case 
         if (colList.length == 0 || this.queenCounter == 8) {
             this.display();
             return true;
@@ -173,10 +169,12 @@ var Game = /** @class */ (function () {
             var col = colList[0];
             if (this.placeQueen(r, col) == true) {
                 // we placed a queen
+                // do depth first search
                 ans = this.solveRand(colList.slice(1)) || ans;
                 if (ans == true) {
                     return true;
                 }
+                // backtrack
                 this.deleteQueen(r, col);
             }
         }
@@ -191,7 +189,7 @@ var Game = /** @class */ (function () {
         for (var r = 0; r < this.board.length; r++) {
             if (this.placeQueen(r, col) == true) {
                 // we placed a queen
-                // depth search
+                // do depth first search
                 ans = this.solve(col + 1) || ans;
                 if (ans == true) {
                     return true;
@@ -208,4 +206,3 @@ var queensGame = new Game();
 queensGame.initialize();
 // console.log(queensGame.solve(0));
 console.log(queensGame.solveRand(shuffle([0, 1, 2, 3, 4, 5, 6, 7])));
-//# sourceMappingURL=Game.js.map

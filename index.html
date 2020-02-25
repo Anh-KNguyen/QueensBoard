@@ -4,113 +4,137 @@
     <meta charset="UTF-8">
     <style type="text/css">
         .chessboard {
-            width: 640px;
-            height: 640px;
+            width: 720px;
+            height: 720px;
             margin: 20px;
-            border: 25px solid #333;
-        }
-        
-        .black {
             float: left;
-            width: 80px;
-            height: 80px;
-            background-color: #999;
-            font-size: 50px;
-            text-align: center;
-            display: table-cell;
-            vertical-align: middle;
         }
         
         .white {
             float: left;
-            width: 80px;
-            height: 80px;
-            background-color: #fff;
-            font-size: 50px;
+            width: 90px;
+            height: 90px;
+            background-color: #F8F9F9;
+            font-size: 60px;
             text-align: center;
             display: table-cell;
             vertical-align: middle;
+        }
+        
+        .beige {
+            float: left;
+            width: 90px;
+            height: 90px;
+            background-color: #d2b48c;
+            font-size: 60px;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
+        
+        .button {
+            background-color: #d2b48c;
+            margin: 20px;
+            border: none;
+            color: black;
+            padding: 10px 25px;
+            text-align: center;
+            font-size: 20px;
+            float: left;
         }
     </style>
 </head>
 
 <body>
     <div id="chessboard" class="chessboard">
-        <!-- 1st -->
+
+        <!-- first row -->
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
-        <!-- 2nd -->
-        <div class="black"></div>
+        <div class="beige"></div>
+
+        <!-- second row -->
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <!-- 3th -->
+
+        <!-- third row -->
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
-        <!-- 4st -->
-        <div class="black"></div>
+        <div class="beige"></div>
+
+        <!-- forth row -->
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <!-- 5th -->
+
+        <!-- fifth row -->
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
-        <!-- 6th -->
-        <div class="black"></div>
+        <div class="beige"></div>
+
+        <!-- sixth row -->
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <!-- 7th -->
+
+        <!-- seventh row -->
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
-        <!-- 8th -->
-        <div class="black"></div>
+        <div class="beige"></div>
+
+        <!-- eighth row -->
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
-        <div class="black"></div>
+        <div class="beige"></div>
         <div class="white"></div>
+
     </div>
+
+    <div><button class="button" onclick="window.location.reload()">Reset</button></div>
+
     <script src="Game.js"></script>
     <script src="chessBoard.js"></script>
+
 </body>
 
 </html>

@@ -84,8 +84,8 @@ class Game {
         }
     }
 
-    // place queen on specific square
-    placeQueen(numRow, numCol): boolean {
+    // check if square is safe to place queen
+    isSafeSquare(numRow, numCol): boolean {
         // not safe, don't add
         if (this.board[numRow][numCol] != this.initChar) {
             return false;
@@ -197,7 +197,7 @@ class Game {
 
         for (let r of rows) {
             let col = colList[0]
-            if (this.placeQueen(r, col) == true) {
+            if (this.isSafeSquare(r, col) == true) {
                 // we placed a queen
                 // do depth first search
                 ans = this.solveRand(colList.slice(1)) || ans;
@@ -219,7 +219,7 @@ class Game {
 
         let ans = false
         for (let r = 0; r < this.board.length; r++) {
-            if (this.placeQueen(r, col) == true) {
+            if (this.isSafeSquare(r, col) == true) {
                 // we placed a queen
                 // do depth first search
                 ans = this.solve(col + 1) || ans;

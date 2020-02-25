@@ -70,8 +70,8 @@ var Game = /** @class */ (function () {
             process.stdout.write("\n");
         }
     };
-    // place queen on specific square
-    Game.prototype.placeQueen = function (numRow, numCol) {
+    // check if square is safe to place queen
+    Game.prototype.isSafeSquare = function (numRow, numCol) {
         // not safe, don't add
         if (this.board[numRow][numCol] != this.initChar) {
             return false;
@@ -167,7 +167,7 @@ var Game = /** @class */ (function () {
         for (var _i = 0, rows_1 = rows; _i < rows_1.length; _i++) {
             var r = rows_1[_i];
             var col = colList[0];
-            if (this.placeQueen(r, col) == true) {
+            if (this.isSafeSquare(r, col) == true) {
                 // we placed a queen
                 // do depth first search
                 ans = this.solveRand(colList.slice(1)) || ans;
@@ -187,7 +187,7 @@ var Game = /** @class */ (function () {
         }
         var ans = false;
         for (var r = 0; r < this.board.length; r++) {
-            if (this.placeQueen(r, col) == true) {
+            if (this.isSafeSquare(r, col) == true) {
                 // we placed a queen
                 // do depth first search
                 ans = this.solve(col + 1) || ans;

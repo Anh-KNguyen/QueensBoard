@@ -1,5 +1,6 @@
 # QueensBoard
-Solution for Eight Queen Puzzle
+Written in JavaScript and implemented with backtracking.
 
+The Game: Place 8 queens so that they don't threaten each other.
 
-The Eight Queens Puzzle is the problem of placing eight chess queens on an 8×8 chessboard so that no two queens threaten each other. Thus, a solution requires that no two queens share the same row, column, or diagonal.
+This algorithm generates a random permutation of 8 chess queens and arranges them in a way so that no two queens attack one another. It avoids placing two queens in the same row, column, or diagonal.

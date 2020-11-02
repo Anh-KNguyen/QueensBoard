@@ -1,0 +1,6 @@
+version: '3.8'
+services:
+    container_name: queens
+    build: .
+    ports:
+        - "3001:80"
